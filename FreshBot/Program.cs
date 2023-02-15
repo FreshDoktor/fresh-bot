@@ -10,9 +10,7 @@ public class TestBot
     private DiscordSocketClient? _client;
     private readonly Repository _repository = Repository.getInstance();
     private List<GuildMessage> _messages = new();
-
-   
-
+    
 
     public static Task Main()
     {
@@ -43,7 +41,30 @@ public class TestBot
 
     private static Task Log(LogMessage msg)
     {
-        Console.WriteLine(msg.ToString());
+        List<LogSeverity> severities = new();
+        var level = ConfigUtil.GetProperty(ConfigKey.LOG_LEVEL).ToLower();
+        switch (level)
+        {
+            case "critical":
+                severities.Add(LogSeverity.Critical);
+                goto case "error";
+            case "error":
+                severities.Add(LogSeverity.Error);
+                goto case "warning";
+            case "warning":
+                severities.Add(LogSeverity.Warning);
+                goto case "info";
+            case "info":
+                severities.Add(LogSeverity.Info);
+                severities.Add(LogSeverity.Verbose);
+                break;
+        }
+        
+        if (severities.Contains(msg.Severity))
+        {
+            Console.WriteLine(msg.ToString());
+        }
+        
         return Task.CompletedTask;
     }
 
@@ -52,6 +73,7 @@ public class TestBot
         Console.Write("Request guild message data from Database:");
         try
         {
+            await Log(new LogMessage(LogSeverity.Error, "Test", "Test"));
             _messages = await _repository.GetGuildMessages();
             foreach (var message in _messages)
                 message.Reactions = await _repository.GetGuildMessageReactions(message.Id);

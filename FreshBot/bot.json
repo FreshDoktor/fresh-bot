@@ -1,6 +1,6 @@
 ﻿{
     "Logging": {
-       "Level": "Info", 
+       "Level": "info/warning/error/critical", 
        "Database": true
     },
     "Database": {
