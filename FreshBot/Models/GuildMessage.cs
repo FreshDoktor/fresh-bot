@@ -3,7 +3,7 @@ using Discord;
 using Newtonsoft.Json;
 using JsonSerializer = System.Text.Json.JsonSerializer;
 
-namespace TestBot.Models;
+namespace FreshBot.Models;
 
 public class GuildMessage
 {

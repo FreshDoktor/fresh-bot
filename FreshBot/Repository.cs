@@ -1,10 +1,10 @@
 ﻿using System.Configuration;
 using System.Security;
+using FreshBot.Models;
 using Microsoft.Extensions.Configuration;
 using MySqlConnector;
-using TestBot.Models;
 
-namespace TestBot;
+namespace FreshBot;
 
 public class Repository
 {

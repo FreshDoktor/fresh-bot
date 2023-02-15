@@ -1,9 +1,9 @@
 ﻿using System.Text.RegularExpressions;
 using Discord;
 using Discord.WebSocket;
-using TestBot.Models;
+using FreshBot.Models;
 
-namespace TestBot;
+namespace FreshBot;
 
 public class TestBot
 {

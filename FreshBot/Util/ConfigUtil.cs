@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 
-namespace TestBot;
+namespace FreshBot;
 
 public class ConfigUtil
 {

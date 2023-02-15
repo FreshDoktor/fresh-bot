@@ -1,4 +1,4 @@
-﻿namespace TestBot.Models;
+﻿namespace FreshBot.Models;
 
 public class MessageReaction
 {
