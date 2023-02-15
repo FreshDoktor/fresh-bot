@@ -68,6 +68,8 @@ public class TestBot
     private async Task ReactionAdded(Cacheable<IUserMessage, ulong> eventMessage,
         Cacheable<IMessageChannel, ulong> eventChannel, SocketReaction reaction)
     {
+        if (_messages.Count <= 0)
+            return;
         if (PrepareReactionChanged(eventMessage, eventChannel, reaction, out var start, out var result,
                 out var groupToAdd)) return;
         if (groupToAdd == 0 || result.Item1)
@@ -82,6 +84,9 @@ public class TestBot
     private async Task ReactionRemoved(Cacheable<IUserMessage, ulong> eventMessage,
         Cacheable<IMessageChannel, ulong> eventChannel, SocketReaction reaction)
     {
+        if (_messages.Count <= 0)
+            return;
+        
         // Bot will remove all Reactions from this specific emote and remove the message reaction for this emote if emote added by bot is removed
         if (_client.CurrentUser.Id == reaction.UserId)
         {
