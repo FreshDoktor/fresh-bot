@@ -1,0 +1,16 @@
+﻿{
+    "Logging": {
+       "Level": "Info", 
+       "Database": true
+    },
+    "Database": {
+        "Hostname": "your.hostname.de",
+        "User": "your_database_user",
+        "Password": "your_database_password",
+        "Database": "your_database_name"
+    },
+    "Bot": {
+        "Token": "your_bot_token"
+    }
+    
+}
